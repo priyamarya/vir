@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags%}
+{%block content%}
+	{{title}}
+
+	
+
+	{{message}}
+	{{user.userlink}}
+
+
+
+	
+<form method="POST" action="" enctype="multipart/form-data">
+		{% csrf_token%}
+
+
+		{{form|crispy}}
+		<input class="btn btn-primary" type="submit" value="Submit"></input>
+			<!-- <input type='text'>
+			<input>
+		 -->
+
+
+	</form>
+	
+	
+
+{%endblock%}
+
+
+
+<div class="row">
+		<div class="col-sm-4">
+			<form class="form" action="" method="POST" enctype="multipart/form-data">{%csrf_token%}
+		       <label class="sr-only">Name</label>
+               <input type="text" class="form-control" placeholder="{{instance.full_name}}" name="full_name" value="" id="name"></input>	
+               <label class="sr-only">Image</label>
+               <input type="file" class="form-control" placeholder="Image" name="pic" value="" id="image"></input><br>
+               
+	               <label >Sex</label>
+	               <select name="sex">
+	                {% if user.gender == 'Male' %}
+	                    <option value="Male" selected>Male</option>
+	                    <option value="Female">Female</option>
+	                    <option value="Others">Others</option>
+	                {% elif user.gender == 'Female' %}
+	                    <option value="Male">Male</option>
+	                    <option value="Female" selected>Female</option>
+	                    <option value="Others">Others</option>
+	                {% else %}
+	                    <option value="Male">Male</option>
+	                    <option value="Female">Female</option>
+	                    <option value='Others' selected>Others</option>
+	                {% endif %}
+	               </select>
+               
+
+               
+               <br>
+               <input class="btn btn-default"  type="submit" value='Submit'>
+			</form>
+
+	    </div>
+
+	</div>

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{%block content%}
+{{card.id}}
+<div >
+		<div class="container_head">
+			{%if card.image%}
+				<p><img src="/media/{{card.image}}" class="blog_head">
+				</p>
+			{%endif%}
+		</div>
+	<div class="container1" >
+		{%if card%}				
+			<h1>{{card.name}}</h1>
+			
+
+			
+			<b>Uploaded On:- {{card.uplaod_date}} | by {{card.user}} | {{card.v_type}} |<a href="{% url 'edit' card.id %}"> Edit </a>| Likes : {{card.likes}} <form action="/likes/like/{{card.id}}/" method="POST">{%csrf_token%}
+			<button class="btn btn-grp"  type="submit" value='{{like_button}}' name="like">	{{like_button}}
+			{%if like_button == 'like' %}
+				<span class="glyphicon glyphicon-thumbs-up" aria-hidden='true'></span></button>
+			{%else%}
+				<span class="glyphicon glyphicon-thumbs-down" aria-hidden='true'></span></button>
+	
+			{%endif%}
+			
+			</form>
+			</b>
+			
+			<br>
+			<br>
+
+
+			
+			Card Description:- {{card.desc|safe}}
+			
+			
+  			
+			<br>
+			<br>
+			
+			
+					
+					<br>
+					<br>		
+				
+			
+		{%else%}
+			{{message}}	
+		{%endif%}
+
+
+				<p><form action="/comments/comment/{{card.id}}/" method="POST">{%csrf_token%}
+				<input type="text" id="comm" class="form-control" placeholder="comment" name="comm" required autofocus>
+				<input class="btn btn-default"  type="submit" value="comment">
+				</form></p>
+				<br>
+				All Comments | {{comments.count}}
+				<br>
+				<br>
+				{%for comment in comments %}
+						<div class="panel panel-default">
+		  					<div class="panel-heading">By: {{comment.user}}</div>
+		  					<div class="panel-body">{{comment.comments}}
+		   							 
+		  					</div>
+ 						</div>
+					
+				{%endfor%}
+
+				{{likes.user}}
+</div>
+</div>	
+
+
+
+{%endblock%}
+
+
+
+
+
+
+

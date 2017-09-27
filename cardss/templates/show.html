@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{%block content%}
+<h1><i>Search Result</i></h1>
+{%if list%}
+	{% for card in list %}
+		<div class="row">
+			<div class="col-md-4 col-sm-6 col-xs-12">
+			
+				<a href="/cards/all/{{card.id}}">
+				<p><img src="/media/{{card.image}}" class="img-responsive2" ></p>
+				</a>
+
+				<a href="{{card.id}}">
+				<p><h3>{{card.name}} </h3></p></a>
+				<p><h3>{{card.desc|truncatewords:3}}</h3></p>
+				<p><a href="{{card.id}}" class="btn btn-primary" role="button">View</a> </p>
+
+			<hr>
+			</div>
+		</div>
+
+	{%endfor%}
+{%else%}
+
+	<b><h4>Search did not match any item.</h4></b>
+{%endif%}
+
+
+{%endblock%}

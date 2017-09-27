@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+
+<div class="container ">
+	<div class="row">
+		<div class="col-sm-4 col-md-6">
+			{%if user%}{%csrf_token%}
+					<h1>One user is alredy logged in.. Please logout first</h1>
+					<a class="btn btn-primary" href='{%url "logout"%}' role="button" >Logut</a>
+			{%else%}
+
+				<form class="form-signin" action="{%url "login" %}" method="POST">
+					{% csrf_token %}
+					<h2 class="form-signin-heading">Please Sign In</h2>
+			        <label  class="sr-only">Name</label>
+			        <input type="text" id="inputEmail" class="form-control" placeholder="Name" name="username" required autofocus>
+			        <label for="inputPassword" class="sr-only">Password</label>
+			        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+			        		
+					<input class="btn btn-primary" type="submit" value="Log In">
+					<a class="btn btn-primary" href='{%url "signup"%}' role="button" >SignUp</a>
+					
+				</form>
+			{%endif%}
+
+		</div>
+	</div>
+	
+<b><i>{{status}}</i></b>
+
+</div>
+
+
+
+{% endblock content %}
+
+

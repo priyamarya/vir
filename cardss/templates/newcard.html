@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{%block head_content%}
+
+{{form.media}}
+
+{%endblock head_content%}
+
+{%block content%}
+
+
+<b><i>{{message}}</i></b>
+<form class="form"  method="POST" action='' enctype="multipart/form-data">{% csrf_token%}
+          
+          {{form.as_p}}
+<input class="btn btn-default"  type="submit" value='Submit'>
+
+
+
+	
+
+
+
+
+{%endblock%}
+
+<div class="row">
+     <div class="col-sm-3 col-xs-3">
+          <form class="form"  method="POST" action='' enctype="multipart/form-data">{% csrf_token%}
+
+               <label class="sr-only">Name</label>
+               <input type="text" class="form-control" placeholder="Name" name="name" value="" id="name"></input><br>
+               <label class="sr-only">Image</label>
+               <input type="file" class="form-control" placeholder="Image" name="image" value="" id="image"></input><br>
+               <label class="sr-only">Describe</label>
+               <input type="text" class="form-control" name="desc" placeholder="Describe" value="" id="desc"></input>
+               <br>
+
+               <li class="dropdown">
+               <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Visibilty<span class="caret"></span></a>
+                   <ul class="dropdown-menu">
+                         <li>Public</li>
+                     
+                         <li>Private</li>
+                    </ul>
+               </li>
+
+
+
+               
+          </form>
+          
+     </div>
+</div>
+
+<label class="sr-only">Visibilty</label>
+               <input type="radio" class="form-control" name="v_type" value="public" id="v_type1"width= "20" height="20"><label for="v_type1">Public</label><br>
+               <input type="radio" class="form-control" name="v_type" value="private" id="v_type" width= "20" height="20" >private<br>
+               </input>
+               <br>
+               <input class="btn btn-default"  type="submit" value='Submit'>

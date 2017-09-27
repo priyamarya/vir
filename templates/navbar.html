@@ -1,0 +1,74 @@
+{% load staticfiles %}
+  
+  {%block navbar%}
+    <div class="navbar-wrapper">
+      
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href={% url 'home' %}>HOME</a>
+            </div>
+            <div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                
+                
+                <li class="dropdown">
+              <a href="/cards/all" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">blogs <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/cards/all/">All Blogs</a></li>
+                
+                <li><a href="/cards/newcard/">Create Blog</a></li>
+                
+                
+              </ul>
+            </li>
+            
+
+            <li class="dropdown">
+              <a href=" /users/user/{{request.user}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                {%if request.user.username%}
+                  <li><a href="/users/logout/">Log Out</a></li>
+                  <li><a href="{% url 'profile_edit' request.user.username %}">Edit Profile</a></li>
+                  <li><a href="/users/user/{{request.user}}">My Account</a></li>
+                {%else%}
+                  <li><a href="/users/login/">Log In</a></li>
+                  <li><a href="/users/register/">Sign Up</a></li>
+                {%endif%}
+              </ul>
+            </li>
+           
+
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+              <form  method="POST" class="navbar-form navbar-left" action="/cards/found/">
+                    {%csrf_token%}
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Search" name='find'>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+            {%if request.user.username%}
+            <li><a href="{% url 'logout' %}">LogOut</a></li>
+            {%else%}
+            <li><a href="{% url 'login' %}">LogIn</a></li>
+            {%endif%}
+            
+          </ul>
+            </div>
+          </div>
+        </nav>
+
+      
+    </div>
+{%endblock%}

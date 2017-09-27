@@ -1,0 +1,28 @@
+.container1{
+	margin:0 200px	 ;
+}
+
+.container_head{
+	margin:0 ;
+}
+img.img-responsive2 {
+    min-height: 100px;
+    min-width: 100px;
+    height: 150px;
+    width: 100%;
+}
+
+img.blog_head{
+	min-height: 100px;
+	min-width: 200px;
+	height:400px;
+	width:100%;
+}
+.blog_box1{
+	border: 1px solid #bdc3c7;
+	margin-bottom: 20px;
+	display: flex;
+}
+.blog_box_content{
+	flex: 1;
+}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{%block content%}
+
+	{%if user.full_name%}
+		<h1>Hello {{user.userlink}}!!</h1>
+		<h3>Here is your account details...</h3>
+		<img src="/media/{{user.profile_pic}}" width="400" height="400">
+		<h3><p>Name : {{user.full_name}}</p>
+		<p>Sex : {{user.gender}}
+		<br>
+
+
+		
+		
+
+		
+{%else%}
+	{{title}}
+	<a href="/users/userdetailsentry/">update your profile</a>
+{%endif%}
+
+
+
+	
+{%endblock%}
